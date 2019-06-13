@@ -1,7 +1,6 @@
 matrix:
   include:
-      os: linux
-      language: generic
+    - language: generic
       sudo: required
       before_install:
         - git clone https://github.com/apple/sourcekit-lsp.git
