@@ -28,4 +28,4 @@ matrix:
         file: sourcekit-lsp-0.0.1.vsix
         skip_cleanup: true
         on:
-          tags: false
+          tags: true
