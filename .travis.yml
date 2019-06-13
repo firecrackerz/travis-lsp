@@ -1,14 +1,24 @@
 matrix:
   include:
-    # - language: python
-    #   python: 
-    #     - 3.4
-    #   before_install:
-    #     - cd backend/
-    #   install: 
-    #     - pip install -r requirements.txt
-    #   script:
-    #     - python manage.py test
+      os: linux
+      language: generic
+      sudo: required
+      before_install:
+        - git clone https://github.com/apple/sourcekit-lsp.git
+        - eval "$(curl -sL https://swiftenv.fuller.li/install.sh)"
+        - cd sourcekit-lsp
+      install:
+        - npm install
+        - npm run postinstall
+      script:
+        - vsce package
+      deploy:
+        provider: releases
+        api_key: $TOKEN
+        file: sourcekit-lsp-0.0.1.vsix
+        skip_cleanup: true
+        on:
+          tags: true
 
     - language: node_js
       node_js:
