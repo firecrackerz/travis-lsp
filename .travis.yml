@@ -18,8 +18,8 @@ matrix:
         - npm install -g vsce
         - cd sourcekit-lsp/Editors/vscode
       install:
-        - yarn install
-        - yarn postinstall
+        - npm install
+        - npm run postinstall
       script:
         - vsce package
       deploy:
