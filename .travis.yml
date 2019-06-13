@@ -4,7 +4,8 @@ matrix:
       services: docker
       script: 
         - docker build -t sourcekit-lsp .
-        - docker cp sourcekit-lsp:/usr/bin/sourcekit-lsp releases
+        - docker create --name data sourcekit-lsp
+        - docker cp data:/usr/bin/sourcekit-lsp releases
       # sudo: required
       # before_install:
       #   - sudo apt-get -q update
