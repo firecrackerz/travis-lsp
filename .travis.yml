@@ -11,12 +11,12 @@ matrix:
         - swift --version
         - swiftenv which swift
       script:
-        - swift build -Xcxx -I/usr/lib/swift && mv `swift build --show-bin-path`/sourcekit-lsp /usr/bin/
+        - swift build -Xcxx -I/home/travis/.swiftenv/versions/5.0.1/usr/bin/swift && mv `swift build --show-bin-path`/sourcekit-lsp /releases
       deploy:
         provider: releases
         api_key: $TOKEN
         file_glob: true
-        file: sourcekit-lsp-0.0.1.vsix
+        file: releases/**/*
         skip_cleanup: true
         on:
           tags: true
