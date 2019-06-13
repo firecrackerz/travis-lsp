@@ -3,8 +3,8 @@ matrix:
     - language: generic
       sudo: required
       before_install:
-        - apt-get -q update
-        - apt-get -q install -y sqlite3 libsqlite3-dev libblocksruntime-dev
+        - sudo apt-get -q update
+        - sudo apt-get -q install -y sqlite3 libsqlite3-dev libblocksruntime-dev
         - git clone https://github.com/apple/sourcekit-lsp.git
         - eval "$(curl -sL https://swiftenv.fuller.li/install.sh)"
         - cd sourcekit-lsp
