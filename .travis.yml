@@ -19,6 +19,7 @@ matrix:
         - cd sourcekit-lsp/Editors/vscode
       install:
         - yarn install
+        - yarn postinstall
       script:
         - vsce package
       deploy:
