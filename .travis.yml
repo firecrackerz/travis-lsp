@@ -7,13 +7,14 @@ matrix:
         - eval "$(curl -sL https://swiftenv.fuller.li/install.sh)"
         - cd sourcekit-lsp
       install:
-        - npm install
-        - npm run postinstall
+        - swift --version
+        - swiftenv which swift
       script:
-        - vsce package
+        - swift build -Xcxx -I/usr/lib/swift && mv `swift build --show-bin-path`/sourcekit-lsp /usr/bin/
       deploy:
         provider: releases
         api_key: $TOKEN
+        file_glob: true
         file: sourcekit-lsp-0.0.1.vsix
         skip_cleanup: true
         on:
