@@ -2,7 +2,9 @@ matrix:
   include:
     - language: generic
       services: docker
-      script: docker build -t sourcekit-lsp .
+      script: 
+        - docker build -t sourcekit-lsp .
+        - docker cp sourcekit-lsp:/usr/bin/sourcekit-lsp releases
       # sudo: required
       # before_install:
       #   - sudo apt-get -q update
@@ -16,14 +18,14 @@ matrix:
       #   - swiftenv which swift
       # script:
       #   - swift build -Xcxx -I/home/travis/.swiftenv/versions/5.0.1/usr/bin/swift && mv `swift build --show-bin-path`/sourcekit-lsp /releases
-      # deploy:
-      #   provider: releases
-      #   api_key: $TOKEN
-      #   file_glob: true
-      #   file: releases/**/*
-      #   skip_cleanup: true
-      #   on:
-      #     tags: true
+      deploy:
+        provider: releases
+        api_key: $TOKEN
+        file_glob: true
+        file: releases/**/*
+        skip_cleanup: true
+        on:
+          tags: true
 
     - language: node_js
       node_js:
