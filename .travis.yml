@@ -6,19 +6,7 @@ matrix:
         - docker build -t sourcekit-lsp .
         - docker create --name data sourcekit-lsp
         - docker cp data:/usr/bin/sourcekit-lsp releases
-      # sudo: required
-      # before_install:
-      #   - sudo apt-get -q update
-      #   - sudo apt-get -q install -y sqlite3 libsqlite3-dev libblocksruntime-dev
-      #   - git clone https://github.com/apple/sourcekit-lsp.git
-      #   - eval "$(curl -sL https://swiftenv.fuller.li/install.sh)"
-      #   - cd sourcekit-lsp
-      # install:
-      #   - swiftenv install 5.0.1
-      #   - swift --version
-      #   - swiftenv which swift
-      # script:
-      #   - swift build -Xcxx -I/home/travis/.swiftenv/versions/5.0.1/usr/bin/swift && mv `swift build --show-bin-path`/sourcekit-lsp /releases
+        - ls
       deploy:
         provider: releases
         api_key: $TOKEN
