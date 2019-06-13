@@ -5,9 +5,9 @@ matrix:
       script: 
         - docker build -t sourcekit-lsp .
         - docker create --name data sourcekit-lsp
-        - docker cp data:/usr/bin/sourcekit-lsp releases
+        - docker cp data:/release release
       before_deploy:
-        - tar -zcf sourcekit-lsp.tar.gz /releases/
+        - tar -zcf sourcekit-lsp.tar.gz /release/
       deploy:
         provider: releases
         api_key: $TOKEN
