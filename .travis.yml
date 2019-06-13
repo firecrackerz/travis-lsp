@@ -7,7 +7,7 @@ matrix:
         - docker create --name data sourcekit-lsp
         - docker cp data:/release release
       before_deploy:
-        - tar -zcf sourcekit-lsp.tar.gz /release/
+        - tar -zcf sourcekit-lsp.tar.gz release
       deploy:
         provider: releases
         api_key: $TOKEN
